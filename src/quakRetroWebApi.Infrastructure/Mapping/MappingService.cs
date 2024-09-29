@@ -17,10 +17,8 @@ public class MappingService(IConfiguration configuration) : IMappingService
            .GetChildren()
            .ToDictionary(x => x.Key, x => x.Value);
 
-        if (!mapping.Any())
-        {
+        if (mapping.Count == 0)
             throw new KeyNotFoundException($"Mapping for entity '{entityName}' not found.");
-        }
 
         return Task.FromResult(mapping);
     }

@@ -13,7 +13,7 @@ public class UsersController(IUserRepository userRepository) : ControllerBase
     private readonly IUserRepository _userRepository = userRepository;
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<User>> GetUser(int id)
+    public async Task<ActionResult<UserEntity>> GetUser(int id)
     {
         var user = await _userRepository.GetUserByIdAsync(id);
 

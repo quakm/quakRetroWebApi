@@ -1,10 +1,33 @@
 {
     "Mapping": {
         "User": {
-            "TableName": "userinformations",
-            "Id": "Id",
-            "Username": "infoname",
-            "Email": "user_mail"
+            "TableName": "users",
+            "Id": "id",
+            "Username": "username",
+            "RealName": "real_name",
+            "Password": "password",
+            "Email": "mail",
+            "EmailVerified": "mail_verified",
+            "AccountCreated": "account_created",
+            "AccountDayOfBirth": "account_day_of_birth",
+            "LastLogin": "last_login",
+            "LastOnline": "last_online",
+            "Motto": "motto",
+            "Look": "look",
+            "Gender": "gender",
+            "Rank": "rank",
+            "Credits": "credits",
+            "Pixels": "pixels",
+            "Points": "points",
+            "Online": "online",
+            "AuthTicket": "auth_ticket",
+            "IpRegister": "ip_register",
+            "IpCurrent": "ip_current",
+            "MachineId": "machine_id",
+            "HomeRoom": "home_room",
+            "SecretKey": "secret_key",
+            "Pincode": "pincode",
+            "ExtraRank": "extra_rank"
         }
     }
 }

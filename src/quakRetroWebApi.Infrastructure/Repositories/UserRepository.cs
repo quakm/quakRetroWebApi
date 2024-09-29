@@ -2,11 +2,6 @@
 using quakRetroWebApi.Core.Entities;
 using quakRetroWebApi.Infrastructure.Mapping;
 using quakRetroWebApi.Infrastructure.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace quakRetroWebApi.Infrastructure.Repositories;
 
@@ -18,18 +13,23 @@ public class UserRepository : IUserRepository
     public UserRepository(DatabaseContext dbContext, IMappingService mappingService)
         => (_dbContext, _mappingService) = (dbContext, mappingService);
 
-    public async Task<User?> GetUserByIdAsync(int id)
+    public async Task<UserEntity?> GetUserByIdAsync(int id)
     {
         var mapping = await _mappingService.GetMappingAsync("User");
+
+        var filteredMapping = mapping.Where(item => item.Key != "TableName" && item.Key != "Id");
+        var queryBody = string.Join(",\n", filteredMapping.Select(item => $"{item.Value} AS {item.Key}"));
+
         var query = $@"
         SELECT 
-            {mapping["Id"]} AS Id, 
-            {mapping["Username"]} AS Username, 
-            {mapping["Email"]} AS Email
+            {mapping["Id"]} AS Id,
+            {queryBody}
         FROM {mapping["TableName"]} 
-        WHERE {mapping["Id"]} = @Id";
+            WHERE {mapping["Id"]} = @Id";
 
         using var connection = _dbContext.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<User>(query, new { Id = id }) ?? null;
+        return await connection.QuerySingleOrDefaultAsync<UserEntity>(query, new { Id = id });
     }
+
+
 }

@@ -1,4 +1,6 @@
+using Dapper;
 using quakRetroWebApi.Infrastructure;
+using quakRetroWebApi.Infrastructure.Helper;
 using quakRetroWebApi.Infrastructure.Mapping;
 using quakRetroWebApi.Infrastructure.Repositories;
 using quakRetroWebApi.Infrastructure.Repositories.Interfaces;
@@ -18,6 +20,7 @@ if (!File.Exists(externalMappingPath))
     throw new FileNotFoundException($"Can't finde Mappingfile at path: {externalMappingPath}");
 }
 
+SqlMapper.AddTypeHandler(new UnixTimestampTypeHandler());
 
 builder.Configuration.AddJsonFile(externalMappingPath, optional: false, reloadOnChange: true);
 
