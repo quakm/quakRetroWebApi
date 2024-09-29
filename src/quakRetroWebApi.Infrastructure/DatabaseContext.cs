@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,14 +10,12 @@ using System.Threading.Tasks;
 
 namespace quakRetroWebApi.Infrastructure;
 
-public class DatabaseContext
+public class DatabaseContext(IConfiguration configuration)
 {
-    private readonly string _connectionString;
-
-    public DatabaseContext(IConfiguration configuration) => _connectionString = configuration.GetConnectionString("DefaultConnection");
+    private readonly string _connectionString = configuration.GetConnectionString("DefaultConnection") ?? "";
 
     public IDbConnection CreateConnection()
-        => new SqlConnection(_connectionString);
+        => new MySqlConnection(_connectionString);
 
 }
 

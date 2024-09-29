@@ -18,7 +18,7 @@ public class UserRepository : IUserRepository
     public UserRepository(DatabaseContext dbContext, IMappingService mappingService)
         => (_dbContext, _mappingService) = (dbContext, mappingService);
 
-    public async Task<User> GetUserByIdAsync(int id)
+    public async Task<User?> GetUserByIdAsync(int id)
     {
         var mapping = await _mappingService.GetMappingAsync("User");
         var query = $@"
@@ -26,10 +26,10 @@ public class UserRepository : IUserRepository
             {mapping["Id"]} AS Id, 
             {mapping["Username"]} AS Username, 
             {mapping["Email"]} AS Email
-        FROM dbo.{mapping["TableName"]} 
+        FROM {mapping["TableName"]} 
         WHERE {mapping["Id"]} = @Id";
 
         using var connection = _dbContext.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<User>(query, new { Id = id });
+        return await connection.QuerySingleOrDefaultAsync<User>(query, new { Id = id }) ?? null;
     }
 }

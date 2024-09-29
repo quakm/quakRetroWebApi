@@ -9,6 +9,6 @@ namespace quakRetroWebApi.Infrastructure.Repositories.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User> GetUserByIdAsync(int id);
+    Task<User?> GetUserByIdAsync(int id);
 }
 
