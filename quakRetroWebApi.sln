@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{55E85F87-62B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quakRetroWebApi.Web", "src\quakRetroWebApi.Web\quakRetroWebApi.Web.csproj", "{6C4A27B8-2000-46D7-9C08-8BDA84969D51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quakRetroWebApi.Infrastructure", "src\quakRetroWebApi.Infrastructure\quakRetroWebApi.Infrastructure.csproj", "{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quakRetroWebApi.Core", "src\quakRetroWebApi.Core\quakRetroWebApi.Core.csproj", "{6907BDAF-2385-429C-A0FA-AF778FF96CF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,18 @@ Global
 		{6C4A27B8-2000-46D7-9C08-8BDA84969D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C4A27B8-2000-46D7-9C08-8BDA84969D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C4A27B8-2000-46D7-9C08-8BDA84969D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6907BDAF-2385-429C-A0FA-AF778FF96CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6907BDAF-2385-429C-A0FA-AF778FF96CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6907BDAF-2385-429C-A0FA-AF778FF96CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6907BDAF-2385-429C-A0FA-AF778FF96CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6C4A27B8-2000-46D7-9C08-8BDA84969D51} = {55E85F87-62BA-4044-AFD3-3F35A0A39FF4}
+		{AB69AB7F-B4E0-449B-A041-7B0B2E9E9A86} = {55E85F87-62BA-4044-AFD3-3F35A0A39FF4}
+		{6907BDAF-2385-429C-A0FA-AF778FF96CF6} = {55E85F87-62BA-4044-AFD3-3F35A0A39FF4}
 	EndGlobalSection
 EndGlobal
