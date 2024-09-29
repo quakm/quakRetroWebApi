@@ -6,6 +6,20 @@ using quakRetroWebApi.Infrastructure.Repositories.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
+configuration.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
+string externalMappingPath = Path.Combine("D:", "Habbo", "quakRetroWebApi", "mapping", "mapping.json");
+
+if (!File.Exists(externalMappingPath))
+{
+    throw new FileNotFoundException($"Can't finde Mappingfile at path: {externalMappingPath}");
+}
+
+
+builder.Configuration.AddJsonFile(externalMappingPath, optional: false, reloadOnChange: true);
 
 builder.Services.AddControllers().AddApplicationPart(typeof(Program).Assembly);
 

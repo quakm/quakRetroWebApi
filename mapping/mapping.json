@@ -1,0 +1,10 @@
+{
+    "Mapping": {
+        "User": {
+            "TableName": "userinformations",
+            "Id": "Id",
+            "Username": "infoname",
+            "Email": "user_mail"
+        }
+    }
+}

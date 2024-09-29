@@ -13,13 +13,14 @@ public class MappingService(IConfiguration configuration) : IMappingService
 
     public Task<Dictionary<string, string>> GetMappingAsync(string entityName)
     {
-        var mapping = new Dictionary<string, string>
+        var mapping = _configuration.GetSection($"Mapping:{entityName}")
+           .GetChildren()
+           .ToDictionary(x => x.Key, x => x.Value);
+
+        if (!mapping.Any())
         {
-            ["TableName"] = _configuration[$"Mapping:{entityName}:TableName"] ?? string.Empty,
-            ["Id"] = _configuration[$"Mapping:{entityName}:Id"] ?? string.Empty,
-            ["Username"] = _configuration[$"Mapping:{entityName}:Username"] ?? string.Empty,
-            ["Email"] = _configuration[$"Mapping:{entityName}:Email"] ?? string.Empty,
-        };
+            throw new KeyNotFoundException($"Mapping for entity '{entityName}' not found.");
+        }
 
         return Task.FromResult(mapping);
     }
