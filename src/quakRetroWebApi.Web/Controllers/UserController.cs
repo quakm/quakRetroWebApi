@@ -18,12 +18,12 @@ public class UsersController(IUserRepository userRepository) : ControllerBase
         var user = await _userRepository.GetUserByIdAsync(id);
 
         if (user == null)
-        {
             return NotFound();
-        }
+
 
         return Ok(user);
     }
+
 }
 
 

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace quakRetroWebApi.Infrastructure.Mapping;
 
-public interface IMappingService
+public class EntityMapping
 {
-    EntityMapping GetMapping(string entityName);
+    public string TableName { get; set; }
+    public string Alias { get; set; }
+    public Dictionary<string, string> Columns { get; set; }
 }

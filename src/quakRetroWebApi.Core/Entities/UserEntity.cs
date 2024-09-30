@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 
 namespace quakRetroWebApi.Core.Entities;
 public class UserEntity
 {
     public int Id { get; set; }
-    public string Username { get; set; }
     public string RealName { get; set; }
     public string Password { get; set; }
     public string Email { get; set; }
     public int EmailVerified { get; set; }
+    public string Username { get; set; }
+    public int Credits { get; set; }
+    public int Pixels { get; set; }
+    public int Points { get; set; }
     public string Motto { get; set; }
     public string Look { get; set; }
     public char Gender { get; set; }
     public int Rank { get; set; }
-    public int Credits { get; set; }
-    public int Pixels { get; set; }
-    public int Points { get; set; }
     public int Online { get; set; }
     public string AuthTicket { get; set; }
     public string IpRegister { get; set; }
@@ -36,5 +32,6 @@ public class UserEntity
     public DateTime LastLogin { get; set; } = DateTime.MinValue;
     public DateTime LastOnline { get; set; } = DateTime.MinValue;
 
+    public UserSettingsEntity UserSettings { get; set; } = default!;
 }
 

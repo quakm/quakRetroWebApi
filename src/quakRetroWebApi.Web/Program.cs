@@ -1,4 +1,5 @@
 using Dapper;
+using quakRetroWebApi.Core.Entities;
 using quakRetroWebApi.Infrastructure;
 using quakRetroWebApi.Infrastructure.Helper;
 using quakRetroWebApi.Infrastructure.Mapping;
