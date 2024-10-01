@@ -48,7 +48,7 @@ public class MappingService(IConfiguration configuration) : IMappingService
         {
             TableName = entitySection["TableName"],
             Alias = entitySection["Alias"],
-            Columns = new Dictionary<string, string>()
+            Columns = []
         };
 
         var columnsSection = entitySection.GetSection("Columns");
