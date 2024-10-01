@@ -14,6 +14,8 @@ configuration.SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+
 string externalMappingPath = Path.Combine("D:", "Habbo", "quakRetroWebApi", "mapping", "mapping.json");
 
 if (!File.Exists(externalMappingPath))
